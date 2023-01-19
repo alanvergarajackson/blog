@@ -16,8 +16,13 @@ use App\Http\Controllers\CursoController;
 */
 
 Route::get('/', HomeController::class);
-
-Route::get('cursos',[CursoController::class, 'index'] );
+//controlador
+/*Route::get('cursos',[CursoController::class, 'index'] );
 Route::get('cursos/create', [CursoController::class, 'create']);
-Route::get('cursos/{id}', [CursoController::class, 'show']);
-
+Route::get('cursos/{id}', [CursoController::class, 'show']);*/
+// grupo de controladores
+Route::controller(CursoController::class)->group(function(){
+    Route::get('cursos', 'index' );
+    Route::get('cursos/create',  'create');
+    Route::get('cursos/{id}', 'show');
+});
